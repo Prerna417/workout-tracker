@@ -6,6 +6,7 @@ const authRoute = require("./routes/auth")
 const userRoute = require("./routes/users")
 const exerciseRoute = require("./routes/exercises")
 const scheduleRoute = require("./routes/schedules")
+const routineRoute = require("./routes/routines")
 
 dotenv.config();
 app.use(express.json());
@@ -22,6 +23,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/exercises", exerciseRoute);
 app.use("/api/schedules",scheduleRoute);
+app.use("/api/routines",routineRoute);
 
 
 app.listen("5000", () => {

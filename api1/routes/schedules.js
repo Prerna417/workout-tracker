@@ -29,6 +29,7 @@ catch(err){
 });
 
 // getschedule
+
 router.get("/schedule", async(req,res)=>{
     try{
         const userId = req.body.userid;
@@ -38,7 +39,7 @@ router.get("/schedule", async(req,res)=>{
             return res.status(404).json({ message: 'User not found' });
           }
 
-        const schedule = await Schedule.find({});
+        const schedule = await Schedule.findOne({ user: userId });
         res.status(200).json(schedule);
     }catch(err){
         res.status(500).json(err);
