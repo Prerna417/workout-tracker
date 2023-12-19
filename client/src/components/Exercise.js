@@ -23,7 +23,7 @@ export default function Exercise() {
                             <p className='text-white mt-4 text-2xl text-center'>Running</p>
                             <div className='flex space-x-44'>
                                 <button className='bg-white rounded-lg py-3 font-bold px-8'>Add</button>
-                                <button className='bg-white  rounded-lg py-3 font-bold px-8'>Remove</button>
+                               
                             </div>
                         </div>
 
@@ -32,7 +32,7 @@ export default function Exercise() {
                             <p className='text-white mt-4 text-2xl text-center'>swimming</p>
                             <div className='flex space-x-44'>
                                 <button className='bg-white rounded-lg py-3 font-bold px-8'>Add</button>
-                                <button className='bg-white  rounded-lg py-3 font-bold px-8'>Remove</button>
+                                
                             </div>
                         </div>
 
@@ -41,7 +41,7 @@ export default function Exercise() {
                             <p className='text-white mt-4 text-2xl text-center'>HIIT workout</p>
                             <div className='flex space-x-44'>
                                 <button className='bg-white rounded-lg py-3 font-bold px-8'>Add</button>
-                                <button className='bg-white  rounded-lg py-3 font-bold px-8'>Remove</button>
+                                
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@ export default function Exercise() {
                             <p className='text-white mt-4 text-2xl text-center'>PushUp</p>
                             <div className='flex space-x-44'>
                                 <button className='bg-white rounded-lg py-3 font-bold px-8'>Add</button>
-                                <button className='bg-white  rounded-lg py-3 font-bold px-8'>Remove</button>
+                                
                             </div>
                         </div>
 
@@ -69,7 +69,7 @@ export default function Exercise() {
                             <p className='text-white mt-4 text-2xl text-center'>lunges</p>
                             <div className='flex space-x-44'>
                                 <button className='bg-white rounded-lg py-3 font-bold px-8'>Add</button>
-                                <button className='bg-white  rounded-lg py-3 font-bold px-8'>Remove</button>
+                               
                             </div>
                         </div>
 
@@ -78,7 +78,7 @@ export default function Exercise() {
                             <p className='text-white mt-4 text-2xl text-center'>Squats</p>
                             <div className='flex space-x-44'>
                                 <button className='bg-white rounded-lg py-3 font-bold px-8'>Add</button>
-                                <button className='bg-white  rounded-lg py-3 font-bold px-8'>Remove</button>
+                                
                             </div>
                         </div>
                     </div>
