@@ -14,16 +14,17 @@ import {
   Link,
   Routes
 } from "react-router-dom";
+import { AuthContext } from "./context/AuthContext";
 
 
 
 function App() {
-const  user  = false;
+const { user } = useContext(AuthContext);
   return (
     <Router >
       <Navbar />
       <Routes>
-      <Route exact path="/" element={<Home />} />
+      <Route exact path="/" element={user? <Home /> : <Login/>} />
       <Route path="/Schedule" element={user ? <Schedule /> : <Login />} />
       <Route path="/ExerciseQueryForm" element={user ? <ExerciseQueryForm /> : <Login />} />
       <Route path="/Exercise" element={user ? <Exercise /> : <Home />} />

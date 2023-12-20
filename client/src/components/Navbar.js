@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function () {
-  const  user  = true;
+  // const  user  = true;
   const [menu, setMenu] = useState(false);
 
 

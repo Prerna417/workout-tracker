@@ -1,37 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect,useContext } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 
 const Schedule = () => {
-  // Assuming schedule is an array of objects, each representing a day's schedule
-  // const [schedule, setSchedule] = useState([
-  //   { day: 'Monday', exercises: [] },
-  //   { day: 'Tuesday', exercises: [] },
-  //   { day: 'Wednesday', exercises: [] },
-  //   { day: 'Thursday', exercises: [] },
-  //   { day: 'Friday', exercises: [] },
-  //   { day: 'Saturday', exercises: [] },
-  //   { day: 'Sunday', exercises: [] }
-  // ]);
+  const [userSchedule, setUserSchedule] = useState(null);
 
-  // // Function to add an exercise to a specific day's schedule
-  // const addExerciseToDay = (dayIndex, exercise) => {
-  //   setSchedule(prevSchedule => {
-  //     const updatedSchedule = [...prevSchedule];
-  //     updatedSchedule[dayIndex].exercises.push(exercise);
-  //     return updatedSchedule;
-  //   });
-  // };
+  const { user } = useContext(AuthContext);
 
+  useEffect(()=>{
+    const fetchSchedule= async() =>{
+      try{
+        if(!user){
+          console.log("user not logged in");
+          return;
+        }
+
+        const res = await axios.get(`schedules/${user.username}`);
+        setUserSchedule(res.data);
+      }catch(err){
+        console.log(err);
+      }
+    };
+    fetchSchedule();
+  },[user]);
+  
   return (
     <div className="container mx-auto py-8 ">
-      <h2 className="text-2xl text-center font-bold mb-8 my-16"> Prerna Have A Look At Your Schedule</h2>
+      <h2 className="text-2xl text-center font-bold mb-8 my-16">{user.username} Have A Look At Your Schedule</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {userSchedule ? (
         <div className='bg-white p-4 shadow-md rounded'>
-        <h3 className="text-xl bg-sky-300 font-bold mb-10 text-center">Monday</h3>
+        <h3 className="text-xl bg-sky-300 font-bold mb-10 text-center">{userSchedule.day}</h3>
          <div className='pl-4'>
-          <h3 className='font-semibold text-sky-950 text-xl mb-8 text-center'>Skipping</h3>
-          <h4 className='font-semibold text-sky-950 mb-10 text-lg text-center'>duration:10min</h4>
+          <h3 className='font-semibold text-sky-950 text-xl mb-8 text-center'>exercises</h3>
+          <ul>
+            {userSchedule.exercises.map((exercise) => (
+              <li key={exercise._id}>
+                <p>Name: {exercise.name}</p>
+                <p>Duration: {exercise.duration} minutes</p>
+              </li>
+            ))}
+          </ul>
          </div>
         </div>
+      ):(
+        <p>loading...</p>
+      )}
       </div>
       <div className='mt-10 pl-8'>
         <button className='bg-sky-200 p-4 rounded text-lg font-semibold'>Create Schedule</button>
