@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function () {
-  const { user } = true;
+  const  user  = true;
   const [menu, setMenu] = useState(false);
 
 
@@ -28,6 +28,9 @@ export default function () {
           </li>
           <li className="pr-7">
             <Link to="/Exercise">Exercise</Link>
+          </li>
+          <li>
+          <Link to="/Login">Login</Link>
           </li>
         </ul>
       </div>

@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Schedule from "./components/Schedule";
 import Schedule1 from "./components/Schedule1";
+import Login from "./components/Login";
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,15 +18,16 @@ import {
 
 
 function App() {
-const { user } = true;
+const  user  = false;
   return (
     <Router >
       <Navbar />
       <Routes>
       <Route exact path="/" element={<Home />} />
-      <Route path="/Schedule" element={user ? <Home /> : <Schedule />} />
-      <Route path="/ExerciseQueryForm" element={user ? <Home /> : <ExerciseQueryForm />} />
-      <Route path="/Exercise" element={user ? <Home /> : <Exercise />} />
+      <Route path="/Schedule" element={user ? <Schedule /> : <Login />} />
+      <Route path="/ExerciseQueryForm" element={user ? <ExerciseQueryForm /> : <Login />} />
+      <Route path="/Exercise" element={user ? <Exercise /> : <Home />} />
+      <Route path="/Login" element={user ? <Home /> : <Login />} />
       </Routes>
       <Footer />
     </Router>
