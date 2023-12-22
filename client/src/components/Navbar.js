@@ -21,7 +21,7 @@ export default function () {
             <Link to="/Schedule">Schedule</Link>
           </li>
           <li className="pr-7">
-            <Link to="/">Check Routine</Link>
+            <Link to="/OthersRoutine">Check Routine</Link>
           </li>
           <li className="pr-7">
             <Link to="/ExerciseQueryForm">Query</Link>

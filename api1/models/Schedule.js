@@ -13,7 +13,7 @@ const scheduleSchema = new mongoose.Schema({
     },
     exercises: [
         {
-          name: {
+          exercise: {
             type: String,
             required: true,
           },

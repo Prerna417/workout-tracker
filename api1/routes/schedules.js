@@ -5,7 +5,7 @@ const User = require("../models/User");
 // post schedule
 router.post("/createSchedule", async (req, res) => {
 try{
-    const userId = req.body.userid;
+    const userId = req.body.userId;
 
     const user = User.findById(userId);
     if (!user) {
@@ -34,12 +34,12 @@ router.get("/:username", async(req,res)=>{
     try{
         const finduser = req.params.username;
 
-        const user1 = User.findOne({finduser});
+        const user1 =await User.findOne({username:finduser});
         if (!user1) {
             return res.status(404).json({ message: 'User not found' });
           }
 
-        const schedule = await Schedule.findOne({ user1: finduser._id });
+        const schedule = await Schedule.find({ user: user1._id });
         res.status(200).json(schedule);
     }catch(err){
         res.status(500).json(err);

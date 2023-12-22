@@ -4,14 +4,27 @@ const User = require("../models/User");
 
 
 // get all routines
-router.get("/Allschedules",async(req,res)=>{
-    try{
-        const schedule = await Schedule.find({});
-        res.status(200).json(schedule);
-    }catch(err){
-        res.status(500).json(err);
+router.get("/Allschedules", async (req, res) => {
+    try {
+      const schedules = await Schedule.find({}).populate('user');
+  
+      // Assuming your User model has a 'username' field
+      const schedulesWithUsername = schedules.map(schedule => {
+        const username = schedule.user ? schedule.user.username : 'Unknown';
+        return {
+          day: schedule.day,
+          exercises: schedule.exercises,
+          username: username
+        };
+      });
+  
+      res.status(200).json(schedulesWithUsername);
+    } catch (err) {
+      console.error("Error:", err);
+      res.status(500).json(err);
     }
-})
+  });
+  
 
 module.exports = router;
 
