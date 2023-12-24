@@ -1,92 +1,60 @@
-import React from 'react'
-import run from '../assets/run.jpg';
-import swim from '../assets/swim.jpg';
-import hiit from '../assets/HIIT.jpg';
-import pushup from '../assets/pushup.jpg';
-import squat from '../assets/squats.jpg';
-import lunge from '../assets/lunges.jpg';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import SearchIcon from '@mui/icons-material/Search';
 
+const Exercise = () => {
+    const [exercise, setExercise] = useState([]);
+    const [category,setCategory] = useState("");
 
+    useEffect(() => {
+        const fetchExercises = async () => {
+            try {
+                const res = await axios.get("exercises/exercise");
+                setExercise(res.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
 
+        fetchExercises();
+    }, []);
 
+    const handleSubmit= async(e) =>{
+        e.preventDefault();
+        try{
+          const res = await axios.get(`exercises/${category}`);
+          console.log(res.data.exercises);
+          setExercise(res.data.exercises);
+        }catch(err){
+          console.log(err);
+        }
+      }
 
-
-export default function Exercise() {
     return (
         <div className='flex flex-col mx-auto w-full h-auto bg-gradient-to-b from-black via-black to-gray-800'>
             <div className='mt-24 pt-10 mb-24'>
-                <h1 className='text-white text-4xl mb-10 pl-18 ml-16'>Cardio Exercises</h1>
+            <div className='flex justify-between items-center mb-4'>
+      <h2 className="text-2xl text-white text-center font-bold mb-8 ml-8">Exercises</h2>
+      <div>
+      <label htmlFor="name" onClick={handleSubmit} className='text-white'><SearchIcon size="20px "/></label>
+      <input type="text" id="name" name="exercise" className='border-2px mr-8' value={category} onChange={(e) => setCategory(e.target.value)}></input>
+      </div>
+      </div>
                 <div className='flex justify-center items-center gap-8'>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8 justify-items-start'>
-                        <div className='h-[400px] w-[400px]  '>
-                            <img src={run} className='h-[300px] ' />
-                            <p className='text-white mt-4 text-2xl text-center'>Running</p>
-                            <div className='flex space-x-44'>
-                                <button className='bg-white rounded-lg py-3 font-bold px-8'>Add</button>
-                               
-                            </div>
+                    {exercise.map((p) => (
+                        <div key={p._id} className='h-[400px] w-[400px]'>
+                            <img src={p.imageUrl} alt={p.name} className='h-[300px]' />
+                            <p className='text-white mt-4 text-2xl text-center'>{p.name}</p>
+                            <p className='text-white mt-4 text-2xl text-center'>{p.category}</p>
                         </div>
-
-                        <div className='h-[400px] w-[400px] '>
-                            <img src={swim} className='h-[300px] ' />
-                            <p className='text-white mt-4 text-2xl text-center'>swimming</p>
-                            <div className='flex space-x-44'>
-                                <button className='bg-white rounded-lg py-3 font-bold px-8'>Add</button>
-                                
-                            </div>
-                        </div>
-
-                        <div className='h-[400px] w-[400px] '>
-                            <img src={hiit} className='h-[300px] ' />
-                            <p className='text-white mt-4 text-2xl text-center'>HIIT workout</p>
-                            <div className='flex space-x-44'>
-                                <button className='bg-white rounded-lg py-3 font-bold px-8'>Add</button>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div className='h-[45px] w-[45px] bg-white flex justify-center items-center rounded-3xl'>
-                        <button className='text-black text-3xl '><i class='bx bxs-chevron-right' ></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <div className='mb-24'>
-                <h1 className='text-white text-4xl mb-10 pl-18 ml-16'>Strength Training</h1>
-                <div className='flex justify-center items-center gap-8'>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8 justify-items-start'>
-                        <div className='h-[400px] w-[400px] '>
-                            <img src={pushup} className='h-[300px] ' />
-                            <p className='text-white mt-4 text-2xl text-center'>PushUp</p>
-                            <div className='flex space-x-44'>
-                                <button className='bg-white rounded-lg py-3 font-bold px-8'>Add</button>
-                                
-                            </div>
-                        </div>
-
-                        <div className='h-[400px] w-[400px] '>
-                            <img src={lunge} className='h-[300px] ' />
-                            <p className='text-white mt-4 text-2xl text-center'>lunges</p>
-                            <div className='flex space-x-44'>
-                                <button className='bg-white rounded-lg py-3 font-bold px-8'>Add</button>
-                               
-                            </div>
-                        </div>
-
-                        <div className='h-[400px] w-[400px] '>
-                            <img src={squat} className='h-[300px] ' />
-                            <p className='text-white mt-4 text-2xl text-center'>Squats</p>
-                            <div className='flex space-x-44'>
-                                <button className='bg-white rounded-lg py-3 font-bold px-8'>Add</button>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div className='h-[45px] w-[45px] bg-white flex justify-center items-center rounded-3xl'>
-                        <button className='text-black text-3xl '><i class='bx bxs-chevron-right' ></i></button>
+                        ))
+                    };
                     </div>
                 </div>
             </div>
         </div>
     )
 }
+
+export default Exercise;

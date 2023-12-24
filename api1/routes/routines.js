@@ -38,8 +38,8 @@ router.get("/:username",async(req,res)=>{
             return res.status(404).json("user not found!");
         }
 
-        const schedule = await Schedule.findOne({ user: user._id });
-        return res.status(200).json({user,schedule});
+        const schedule = await Schedule.find({ user: user._id });
+        return res.status(200).json({schedule});
     }catch(err){
         return res.status(500).json(err);
     }

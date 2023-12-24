@@ -3,6 +3,7 @@ import { useRef } from "react";
 import {loginCall} from "../apicalls"
 import {AuthContext} from "../context/AuthContext";
 import {CircularProgress} from "@material-ui/core"
+import { Link } from 'react-router-dom';
 
 function Login() {
   const email = useRef();
@@ -38,7 +39,7 @@ function Login() {
 
           <h6 className='text-sm mt-6'>forgot password</h6>
 
-          <button className='bg-sky-300 px-4 py-2 rounded mt-6'>Create a new account</button>
+          <button className='bg-sky-300 px-4 py-2 rounded mt-6'><Link to="/Register">Create a new account</Link></button>
         </form>
     </div>
   )

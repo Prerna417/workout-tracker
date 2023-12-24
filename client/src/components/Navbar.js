@@ -30,7 +30,7 @@ export default function () {
             <Link to="/Exercise">Exercise</Link>
           </li>
           <li>
-          <Link to="/Login">Login</Link>
+          <Link to="/Login">Login/Register</Link>
           </li>
         </ul>
       </div>

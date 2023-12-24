@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Schedule from "./components/Schedule";
 import OthersRoutine from "./components/OthersRoutine";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,12 +25,13 @@ const { user } = useContext(AuthContext);
     <Router >
       <Navbar />
       <Routes>
-      <Route exact path="/" element={user? <Home /> : <Login/>} />
+      <Route exact path="/" element={<Home />} />
       <Route path="/Schedule" element={user ? <Schedule /> : <Login />} />
-      <Route path="/OthersRoutine" element={user ? <OthersRoutine /> : <Login />} />
+      <Route path="/OthersRoutine" element={<OthersRoutine />} />
       <Route path="/ExerciseQueryForm" element={user ? <ExerciseQueryForm /> : <Login />} />
-      <Route path="/Exercise" element={user ? <Exercise /> : <Home />} />
+      <Route path="/Exercise" element={<Exercise />} />
       <Route path="/Login" element={user ? <Home /> : <Login />} />
+      <Route path="/Register" element={user ? <Home /> : <Register />} />
       </Routes>
       <Footer />
     </Router>

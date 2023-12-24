@@ -4,6 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 function OthersRoutine() {
     const [allSchedule, setAllSchedule] = useState([]);
+    const [name,setName] = useState("");
 
     useEffect(()=>{
         const fetchSchedule= async() =>{
@@ -19,17 +20,29 @@ function OthersRoutine() {
         };
         fetchSchedule();
       },[]);
+
+      const handleSubmit= async(e) =>{
+        e.preventDefault();
+        try{
+          const res = await axios.get(`routines/${name}`);
+          console.log(res.data.schedule);
+          setAllSchedule(res.data.schedule);
+        }catch(err){
+          console.log(err);
+        }
+      }
+
   return (
     <div className="container mx-auto py-8 ">
         <div className='flex justify-between items-center'>
       <h2 className="text-2xl text-center font-bold mb-8 my-16 ">Have A Look At Schedule of various person</h2>
       <div>
-      <label for="name"><SearchIcon size="20px"/></label>
-      <input type="text" id="name" name="exercise" className='border-2px'  ></input>
+      <label htmlFor="name" onClick={handleSubmit}><SearchIcon size="20px"/></label>
+      <input type="text" id="name" name="exercise" className='border-2px' value={name} onChange={(e) => setName(e.target.value)}></input>
       </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      { allSchedule.length > 0 ? (
+      {allSchedule && allSchedule.length > 0 ? (
       allSchedule.map((schedule)=> (
         <div key={schedule._id} className='bg-white p-4 shadow-md rounded'>
         <h3 className="text-xl bg-sky-300 font-bold mb-10 text-center">{schedule.username}'s schedule</h3>
