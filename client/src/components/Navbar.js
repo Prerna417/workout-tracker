@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from "../context/AuthContext";
+import { Logout } from '../context/AuthActions';
+import { useNavigate } from 'react-router-dom';
 
 export default function () {
-  // const  user  = true;
+  const { user } = useContext(AuthContext);
   const [menu, setMenu] = useState(false);
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+  
+
+  const handleLogout = () => {
+    dispatch(Logout());
+    navigate('/');
+  };
 
 
   return (
@@ -30,7 +41,10 @@ export default function () {
             <Link to="/Exercise">Exercise</Link>
           </li>
           <li>
-          <Link to="/Login">Login/Register</Link>
+            {!user && <Link to="/Login">Login/Register</Link>}
+          </li>
+          <li onClick={handleLogout}>
+            {user && <Link to="/Logout">Logout</Link>}
           </li>
         </ul>
       </div>

@@ -82,17 +82,17 @@ const Schedule = () => {
       <p>No schedules available</p>
     )}
       </div>
-      <div className='mt-10 pl-8'>
+      <div className='mt-10 flex justify-center'>
         <button className='bg-sky-200 p-4 rounded text-lg font-semibold'>Create Schedule</button>
       </div>
 
-      <div className='mt-8 pt-4 ml-8 w-1/4 '>
-        <form onSubmit={handleSubmit} className='flex flex-col items-center bg-slate-300 py-5 h-[300px] '>
+      <div className='mt-8 pt-4  flex justify-center '>
+        <form onSubmit={handleSubmit} className='flex flex-col items-center bg-slate-300 px-6 py-5 h-[300px] '>
           <label for="day">Enter day:</label>
           <input type="text" id="day" name="day" value={day} onChange={(e) => setDay(e.target.value)}></input>
           <br />
           {exercises.map((exercise,index)=>(
-            <div key={index}>
+            <div key={index} className='space-y-6'>
           <label for="exercise">Enter Exercises:</label>
           <input type="text" id="exercise" name="exercise" value={exercise.exercise} onChange={(e) => handleExerciseChange(index, 'exercise', e.target.value)} ></input>
           <br/>
@@ -100,7 +100,7 @@ const Schedule = () => {
           <input type="number" id="duration" name="duration" value={exercise.duration} onChange={(e) => handleExerciseChange(index, 'duration', parseInt(e.target.value, 10))}></input>
           </div>
           ))}  
-          <button type="submit" className="bg-white px-4 py-2 rounded mt-4 font-semibold">submit</button>
+          <button type="submit" className="bg-white px-4 py-2 rounded mt-8 font-semibold">submit</button>
         </form>
       </div>
     </div>

@@ -25,8 +25,8 @@ function OthersRoutine() {
         e.preventDefault();
         try{
           const res = await axios.get(`routines/${name}`);
-          console.log(res.data.schedule);
-          setAllSchedule(res.data.schedule);
+          console.log(res.data);
+          setAllSchedule(res.data);
         }catch(err){
           console.log(err);
         }

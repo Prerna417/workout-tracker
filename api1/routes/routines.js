@@ -38,8 +38,16 @@ router.get("/:username",async(req,res)=>{
             return res.status(404).json("user not found!");
         }
 
-        const schedule = await Schedule.find({ user: user._id });
-        return res.status(200).json({schedule});
+        const schedules = await Schedule.find({ user: user._id }).populate('user');
+        const schedulesWithUsername = schedules.map(schedule => {
+          const username = schedule.user ? schedule.user.username : 'Unknown';
+          return {
+            day: schedule.day,
+            exercises: schedule.exercises,
+            username: username
+          };
+        });
+        return res.status(200).json(schedulesWithUsername);
     }catch(err){
         return res.status(500).json(err);
     }
