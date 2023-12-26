@@ -5,6 +5,7 @@ import { AuthContext } from '../context/AuthContext';
 const Schedule = () => {
   const [userSchedule, setUserSchedule] = useState([]);
   const [day,setDay] = useState("");
+  const [openForm,setOpenForm] = useState(false);
   const [exercises,setExercises] = useState([{
       exercise:"",
       duration: "",
@@ -58,13 +59,13 @@ const Schedule = () => {
   };
   
   return (
-    <div className="container mx-auto py-8 ">
-      <h2 className="text-2xl text-center font-bold mb-8 my-16">{user.username} Have A Look At Your Schedule</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="container mx-auto py-8 bg-gradient-to-b from-black via-black to-gray-800">
+      <h2 className="text-2xl text-center font-bold mb-8 my-16 text-white">{user.username} Have A Look At Your Schedule</h2>
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       { userSchedule.length > 0 ? (
       userSchedule.map((schedule)=> (
         <div key={schedule._id} className='bg-white p-4 shadow-md rounded'>
-        <h3 className="text-xl bg-sky-300 font-bold mb-10 text-center">{schedule.day}</h3>
+        <h3 className="text-xl bg-sky-300 font-bold mb-10 text-center">{schedule.day.join(', ')}</h3>
          <div className='pl-4'>
           <h3 className='font-semibold text-sky-950 text-xl mb-8 text-center'>exercises</h3>
           <ul>
@@ -83,9 +84,9 @@ const Schedule = () => {
     )}
       </div>
       <div className='mt-10 flex justify-center'>
-        <button className='bg-sky-200 p-4 rounded text-lg font-semibold'>Create Schedule</button>
+        <button className='bg-sky-200 p-4 rounded text-lg font-semibold' onClick={() => setOpenForm(!openForm)}>Create Schedule</button>
       </div>
-
+      {openForm && 
       <div className='mt-8 pt-4  flex justify-center '>
         <form onSubmit={handleSubmit} className='flex flex-col items-center bg-slate-300 px-6 py-5 h-[300px] '>
           <label for="day">Enter day:</label>
@@ -100,9 +101,10 @@ const Schedule = () => {
           <input type="number" id="duration" name="duration" value={exercise.duration} onChange={(e) => handleExerciseChange(index, 'duration', parseInt(e.target.value, 10))}></input>
           </div>
           ))}  
-          <button type="submit" className="bg-white px-4 py-2 rounded mt-8 font-semibold">submit</button>
+          <button type="submit" className="bg-white px-4 py-2 rounded mt-8 font-semibold" >submit</button>
         </form>
       </div>
+}
     </div>
   );
 };

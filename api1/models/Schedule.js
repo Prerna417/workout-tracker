@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const scheduleSchema = new mongoose.Schema({
-    day:{
+    day:[{
         type: String,
         required: true,
-        enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' , 'Saturday', 'Sunday']
-    },
+        enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' , 'Saturday', 'Sunday','Everyday']
+    }],
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",

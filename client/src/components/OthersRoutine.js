@@ -33,11 +33,11 @@ function OthersRoutine() {
       }
 
   return (
-    <div className="container mx-auto py-8 ">
+    <div className="container mx-auto py-8 bg-gradient-to-b from-black via-black to-gray-800">
         <div className='flex justify-between items-center'>
-      <h2 className="text-2xl text-center font-bold mb-8 my-16 ">Have A Look At Schedule of various person</h2>
+      <h2 className="text-2xl text-center font-bold mb-8 my-16 text-white">Have A Look At Schedule of various person</h2>
       <div>
-      <label htmlFor="name" onClick={handleSubmit}><SearchIcon size="20px"/></label>
+      <label htmlFor="name" onClick={handleSubmit} className='text-white'><SearchIcon size="20px"/></label>
       <input type="text" id="name" name="exercise" className='border-2px' value={name} onChange={(e) => setName(e.target.value)}></input>
       </div>
       </div>
