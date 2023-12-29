@@ -31,7 +31,7 @@ const { user } = useContext(AuthContext);
       <Route path="/ExerciseQueryForm" element={user ? <ExerciseQueryForm /> : <Login />} />
       <Route path="/Exercise" element={<Exercise />} />
       <Route path="/Login" element={user ? <Home /> : <Login />} />
-      <Route path="/Register" element={user ? <Home /> : <Register />} />
+      <Route path="/Register" element={<Register />} />
       </Routes>
       <Footer />
     </Router>
