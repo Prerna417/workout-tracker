@@ -33,12 +33,12 @@ function OthersRoutine() {
       }
 
   return (
-    <div className="container mx-auto py-8 bg-gradient-to-b from-black via-black to-gray-800">
-        <div className='flex justify-between items-center'>
-      <h2 className="text-2xl text-center font-bold mb-8 my-16 text-white">Have A Look At Schedule of various person</h2>
-      <div>
+    <div className="p-10 bg-gradient-to-b from-black via-black to-gray-800">
+      <div className='flex flex-col md:flex-row justify-between items-center'>
+      <h2 className="text-xl md:text-2xl font-semibold md:font-bold mb-8 mt-16 text-white">Have A Look At Schedule of various person</h2>
+      <div className='p-4'>
       <label htmlFor="name" onClick={handleSubmit} className='text-white'><SearchIcon size="20px"/></label>
-      <input type="text" id="name" name="exercise" className='border-2px' value={name} onChange={(e) => setName(e.target.value)}></input>
+      <input type="text" id="name" name="exercise" className='border-2px rounded-lg' placeholder='Enter a name' value={name} onChange={(e) => setName(e.target.value)}></input>
       </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

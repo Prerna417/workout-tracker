@@ -33,12 +33,12 @@ export default function () {
   }
 
   return (
-    <div className='flex items-center justify-between fixed px-4 w-full flex-wrap z-[30] h-20 bg-gray-800 text-white'>
+    <div className='flex items-center justify-around fixed w-full z-[999] h-20 bg-gray-800 text-white'>
       <div>
-        <h1 className=''>Workout Tracker</h1>
+        <h1 className='text-3xl'>Workout Tracker</h1>
       </div>
 
-      <div>
+      <div className='flex items-center justify-center '>
         <ul className='hidden md:flex md:flex-row'>
           <li className="pr-7">
             <Link to="/">Home</Link>
@@ -58,8 +58,17 @@ export default function () {
           <li>
             {!user && <Link to="/Login">Login/Register</Link>}
           </li>
-          <li>
+          <li className='relative'>
             {user && <button onClick={() => setProfile(!profile)}>Profile</button>}
+            <div className={`absolute mt-10 ${profile ? 'block' : 'hidden'} `}>
+            {profile && (
+            <ul className='w-32 flex flex-col bg-gray-800 space-y-4 p-4 rounded-lg text-center text-white '>
+              <li className="border-b border-white cursor-pointer pb-2" onClick={handleLogout}>Logout</li>
+              <li className="border-b border-white pb-2" onClick={()=>setProfile(!profile)}><Link to="/Register">Add a new account</Link></li>
+              <li className=""><button onClick={(e) => handleClick(e, user._id)}>delete account</button></li>
+            </ul>
+          )}
+        </div>
           </li>
         </ul>
       </div>
@@ -94,17 +103,6 @@ export default function () {
           )}
         </div>
       </div>
-      <div className={`${profile ? 'block' : 'hidden'}`}>
-          {profile && (
-            <ul className=' flex flex-col basis-full absolute top-20 right-0 bg-gray-700 space-y-6 rounded-sm text-center text-white'>
-              <li className="pr-7" onClick={handleLogout}>Logout</li>
-              <li className="pr-7" onClick={()=>setProfile(!profile)}><Link to="/Register">Add a new account</Link></li>
-              <li className="pr-7"><button onClick={(e) => handleClick(e, user._id)}>delete account</button></li>
-            </ul>
-          )}
-        </div>
-
-
     </div>
   )
 }

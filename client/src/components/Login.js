@@ -31,10 +31,10 @@ function Login() {
           <input type="email" id="email" name="email" ref={email}></input>
           <br /> */}
           <label for="password">Enter password:</label>
-          <input type="password" id="password" name="password" ref={password} minLength = "6"></input>
+          <input type="password" id="password" name="password" required ref={password} minLength = "6"></input>
           <br/>
           <label for="username">Enter username:</label>
-          <input type="text" id="username" name="username" ref ={username}></input>
+          <input type="text" id="username" name="username" required ref ={username}></input>
           <button  className='font-semibold bg-sky-300 text-black px-24 py-2 mt-6 rounded  ' disabled={isFetching}>{isFetching? <CircularProgress size="20px"/>:"Login"}</button>
 
           <h6 className='text-sm mt-6'>forgot password</h6>

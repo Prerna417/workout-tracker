@@ -73,7 +73,7 @@ const Schedule = () => {
   
   
   return (
-    <div className="container mx-auto py-8 bg-gradient-to-b from-black via-black to-gray-800">
+    <div className=" py-8 bg-gradient-to-b from-black via-black to-gray-800">
       <h2 className="text-2xl text-center font-bold mb-8 my-16 text-white">{user.username} Have A Look At Your Schedule</h2>
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       { userSchedule.length > 0 ? (
