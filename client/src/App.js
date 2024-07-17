@@ -16,6 +16,7 @@ import {
   Routes
 } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
+import UpdateAccount from "./components/UpdateAccount";
 
 
 
@@ -31,6 +32,7 @@ const { user } = useContext(AuthContext);
       <Route path="/ExerciseQueryForm" element={user ? <ExerciseQueryForm /> : <Login />} />
       <Route path="/Exercise" element={<Exercise />} />
       <Route path="/Login" element={user ? <Home /> : <Login />} />
+      <Route path="/UpdateAccount" element={<UpdateAccount />} />
       <Route path="/Register" element={<Register />} />
       </Routes>
       <Footer />

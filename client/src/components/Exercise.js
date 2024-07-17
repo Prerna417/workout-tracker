@@ -18,7 +18,7 @@ const Exercise = () => {
     };
 
     fetchExercises();
-  }, []);
+  }, [category]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -9,7 +9,7 @@ const ExerciseQueryForm = () => {
   return (
     <div className="py-8 bg-gradient-to-b from-black via-black to-gray-800">
       <h2 className="text-2xl font-bold mb-4">Exercise Query Form</h2>
-      <form  action='https://getform.io/f/ae893949-80e9-4025-9b34-52efa444df31' method='POST' className="max-w-md mx-auto">
+      <form  action='https://getform.io/f/ae893949-80e9-4025-9b34-52efa444df31' method='POST' className="max-w-md mx-auto w-80">
         <div className="mb-4">
           <label htmlFor="query" className="block font-bold mb-2 text-white">Exercise Query</label>
           <textarea

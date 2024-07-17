@@ -21,19 +21,19 @@ export default function Footer() {
                     <p> Email: abc@gmail.com</p>
                     <div className='flex space-x-3 mt-3 pl-4 mb-8'>
                         <a href="#" className='text-2xl'>
-                            <i class='bx bxl-facebook-square'></i>
+                            <i className='bx bxl-facebook-square'></i>
                         </a>
                         <a href="#" className='text-2xl'>
-                            <i class='bx bxl-twitter' ></i>
+                            <i className='bx bxl-twitter' ></i>
                         </a>
                         <a href="#" className='text-2xl'>
-                            <i class='bx bxl-instagram' ></i>
+                            <i className='bx bxl-instagram' ></i>
                         </a>
                     </div>
                 </div>
             </div>
             <div className='flex justify-center text-white mt-2'>
-                <a href='#' className='text-xl'><i class='bx bx-copyright' ></i></a>
+                <a href='#' className='text-xl'><i className='bx bx-copyright' ></i></a>
                 <p>2023 MyFitnessPal, Inc.
                     Community Guidelines
                     Feedback

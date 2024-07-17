@@ -57,14 +57,14 @@ export default function () {
           </li>
           <li>
             {!user && <Link to="/Login">Login/Register</Link>}
-          </li>
+          </li >
           <li className='relative'>
             {user && <button onClick={() => setProfile(!profile)}>Profile</button>}
-            <div className={`absolute mt-10 ${profile ? 'block' : 'hidden'} `}>
+            <div className={`absolute right-0 mt-10 ${profile ? 'block' : 'hidden'} `}>
             {profile && (
             <ul className='w-32 flex flex-col bg-gray-800 space-y-4 p-4 rounded-lg text-center text-white '>
               <li className="border-b border-white cursor-pointer pb-2" onClick={handleLogout}>Logout</li>
-              <li className="border-b border-white pb-2" onClick={()=>setProfile(!profile)}><Link to="/Register">Add a new account</Link></li>
+              <li className="border-b border-white pb-2 pointer" onClick={()=>setProfile(!profile)}><Link to="/UpdateAccount">Update Account</Link></li>
               <li className=""><button onClick={(e) => handleClick(e, user._id)}>delete account</button></li>
             </ul>
           )}
@@ -83,22 +83,37 @@ export default function () {
         </button>
         <div className={` ${menu ? 'block' : 'hidden'}`}>
           {menu && (
-            <ul className=' flex flex-col basis-full absolute top-20 right-0 bg-gray-700 space-y-6 rounded-sm text-center text-white' >
-              <li className="pr-7">
+            <ul className='w-32 flex flex-col basis-full absolute top-20 right-0 bg-gray-700 space-y-3 rounded-sm text-center text-white' >
+              <li onClick={()=>{setMenu(!menu)}}>
                 <Link to="/">Home</Link>
               </li>
-              <li className="pr-7">
+              <li  onClick={()=>{setMenu(!menu)}}>
                 <Link to="/Schedule">Schedule</Link>
               </li>
-              <li className="pr-7">
-                <Link to="/">Check Routine</Link>
+              <li  onClick={()=>{setMenu(!menu)}}>
+                <Link to="/OthersRoutine">Check Routine</Link>
               </li>
-              <li className="pr-7">
+              <li  onClick={()=>{setMenu(!menu)}}>
                 <Link to="/ExerciseQueryForm">Query</Link>
               </li>
-              <li className="pr-7">
+              <li  onClick={()=>{setMenu(!menu)}}>
                 <Link to="/Exercise">Exercise</Link>
               </li>
+              <li onClick={()=>{setMenu(!menu)}}>
+               {!user && <Link to="/Login">Login/Register</Link>}
+               </li >
+               <li className='relative'>
+            {user && <button onClick={() => setProfile(!profile)}>Profile</button>}
+            <div className={`absolute right-0 mt-2 ${profile ? 'block' : 'hidden'} `}>
+            {profile && (
+            <ul className='w-32 flex flex-col bg-gray-800 space-y-4 p-4 rounded-lg text-center text-white '>
+              <li className="border-b border-white cursor-pointer pb-2" onClick={()=>{handleLogout();setMenu(!menu)}}>Logout</li>
+              <li className="border-b border-white pb-2 pointer" onClick={()=>{setProfile(!profile); setMenu(!menu)}}><Link to="/UpdateAccount">Update Account</Link></li>
+              <li className=""><button onClick={(e) => {handleClick(e, user._id); setMenu(!menu)}}>delete account</button></li>
+            </ul>
+          )}
+        </div>
+          </li>
             </ul>
           )}
         </div>

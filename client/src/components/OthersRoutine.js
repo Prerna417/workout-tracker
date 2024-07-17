@@ -19,7 +19,7 @@ function OthersRoutine() {
           }
         };
         fetchSchedule();
-      },[]);
+      },[name]);
 
       const handleSubmit= async(e) =>{
         e.preventDefault();
