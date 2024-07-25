@@ -65,7 +65,7 @@ export default function () {
             <ul className='w-32 flex flex-col bg-gray-800 space-y-4 p-4 rounded-lg text-center text-white '>
               <li className="border-b border-white cursor-pointer pb-2" onClick={handleLogout}>Logout</li>
               <li className="border-b border-white pb-2 pointer" onClick={()=>setProfile(!profile)}><Link to="/UpdateAccount">Update Account</Link></li>
-              <li className=""><button onClick={(e) => handleClick(e, user._id)}>delete account</button></li>
+              {/* <li className=""><button onClick={(e) => handleClick(e, user._id)}>delete account</button></li> */}
             </ul>
           )}
         </div>

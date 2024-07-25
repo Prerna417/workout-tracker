@@ -18,7 +18,7 @@ const Exercise = () => {
     };
 
     fetchExercises();
-  }, [category]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +30,17 @@ const Exercise = () => {
     }
   }
 
+  const handleKeyPress = async (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      try {
+        const res = await axios.get(`exercises/${category}`);
+        setExercises(res.data.exercises);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+};
   const handleExerciseClick = (exercise) => {
     setSelectedExercise(exercise);
   };
@@ -38,6 +49,8 @@ const Exercise = () => {
     setSelectedExercise(null);
   };
 
+  
+
   return (
     <div className='flex flex-col mx-auto w-full h-auto bg-gradient-to-b from-black via-black to-gray-800'>
       <div className='mt-24 pt-10 mb-24'>
@@ -45,7 +58,7 @@ const Exercise = () => {
           <h2 className="text-2xl text-white text-center font-bold mb-8 ml-8">Exercises</h2>
           <div>
             <label htmlFor="name" onClick={handleSubmit} className='text-white'><SearchIcon size="20px " /></label>
-            <input type="text" id="name" name="exercise" className='border-2px mr-8' value={category} onChange={(e) => setCategory(e.target.value)}></input>
+            <input type="text" id="name" onKeyDown={handleKeyPress} name="exercise" className='border-2px mr-8' value={category} onChange={(e) => setCategory(e.target.value)}></input>
           </div>
         </div>
         <div className='flex justify-center items-center gap-8'>
